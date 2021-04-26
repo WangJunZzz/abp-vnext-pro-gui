@@ -1,4 +1,6 @@
 ﻿using AbpVnextPro.GUI.Domain.Githubs;
+using AbpVnextPro.GUI.Domain.Replaces;
+using AbpVnextPro.GUI.Domain.Zips;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,22 +11,32 @@ using Volo.Abp.DependencyInjection;
 
 namespace AbpVnextPro.GUI.ApplicationService.Generates
 {
-    public class GenerateAppService: ITransientDependency
+    public class GenerateAppService : ITransientDependency
     {
         public readonly GithubManager _githubManager;
-
-        public GenerateAppService(GithubManager githubManager)
+        private readonly ZipManager _zipManager;
+        private readonly ReplaceManager _replaceManager;
+        public GenerateAppService(GithubManager githubManager, ZipManager zipManager, ReplaceManager replaceManager)
         {
             _githubManager = githubManager;
+            _zipManager = zipManager;
+            _replaceManager = replaceManager;
         }
 
 
-        public async Task GenerateSourceAsync()
+        public async Task<string> DownloadSourceAsync()
         {
-            var releae = await _githubManager.GetLastReleaseInfoAsync();
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "source",$"abp-vnext-pro-{releae.TagName}.zip");
-            var uri = new Uri($"https://github.com/WangJunZzz/abp-vnext-pro/archive/refs/tags/{releae.TagName}.zip");
-            await _githubManager.DownloadReleaseAsync(uri, path);
+            return await _githubManager.GetSourceCodeAsync();
+        }
+
+        public string ExtractZips(string path)
+        {
+            return _zipManager.ExtractZips(path);
+        }
+
+        public void GenerateTemplate(string path, string companyName, string projectName)
+        {
+            _replaceManager.ReplaceTemplates(path, companyName, projectName);
         }
     }
 }

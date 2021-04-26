@@ -7,18 +7,12 @@
         mc:Ignorable="d"
         Title="AbpVnextPro.GUI" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="42*"/>
-            <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="24*"/>
-            <ColumnDefinition Width="703*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="CompanyName:" HorizontalAlignment="Center" Margin="0,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,-0.375" Grid.Column="3"/>
-        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="45,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" Grid.Column="4"/>
-        <TextBox x:Name="ProjectName" HorizontalAlignment="Left" Margin="359,27,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Grid.Column="4"/>
-        <Button Content="下载模板" HorizontalAlignment="Left" Margin="593,25,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Column="4"/>
-        <Label Content="ProjectName:" HorizontalAlignment="Left" Margin="265,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.071,-0.376" Height="25" Width="94" Grid.Column="4"/>
-        <ListBox x:Name="Logs" Margin="34,53,39,51" IsEnabled="False" Grid.ColumnSpan="5"/>
+
+        <Label Content="CompanyName:" HorizontalAlignment="Left" Margin="34,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,-0.375" Width="104"/>
+        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="143,28,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="ProjectName" HorizontalAlignment="Left" Margin="462,25,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <Button Content="下载模板" HorizontalAlignment="Left" Margin="709,23,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label Content="ProjectName:" HorizontalAlignment="Left" Margin="368,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.071,-0.376" Height="25" Width="94"/>
+        <TextBox x:Name="Logs" HorizontalAlignment="Left" Margin="42,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719" Height="355"/>
     </Grid>
 </Window>
