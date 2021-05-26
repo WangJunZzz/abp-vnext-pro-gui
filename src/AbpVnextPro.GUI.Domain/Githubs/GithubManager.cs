@@ -12,7 +12,7 @@ namespace AbpVnextPro.GUI.Domain.Githubs
     public class GithubManager : ITransientDependency
     {
         private string Owner = "WangJunZzz";
-        private string RepsotiryName ="abp-vnext-pro";
+        private string RepsotiryName = "abp-vnext-module-template";
 
 
         public async Task<string> GetSourceCodeAsync()
