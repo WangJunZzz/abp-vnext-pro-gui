@@ -8,11 +8,12 @@
         Title="AbpVnextPro.GUI" Height="450" Width="800">
     <Grid>
 
-        <Label Content="CompanyName:" HorizontalAlignment="Left" Margin="34,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,-0.375" Width="104"/>
-        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="143,28,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
-        <TextBox x:Name="ProjectName" HorizontalAlignment="Left" Margin="462,25,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
-        <Button Content="下载模板" HorizontalAlignment="Left" Margin="709,23,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Label Content="ProjectName:" HorizontalAlignment="Left" Margin="368,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.071,-0.376" Height="25" Width="94"/>
-        <TextBox x:Name="Logs" HorizontalAlignment="Left" Margin="42,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719" Height="355"/>
+        <Label Content="CompanyName:" HorizontalAlignment="Left" Margin="38,49,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.3,-0.375" Width="104"/>
+        <TextBox x:Name="CompanyName" HorizontalAlignment="Left" Margin="147,53,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="225"/>
+        <TextBox x:Name="ProjectName" HorizontalAlignment="Left" Margin="466,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <Button Content="下载模板" HorizontalAlignment="Left" Margin="713,48,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Label Content="ProjectName:" HorizontalAlignment="Left" Margin="372,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.071,-0.376" Height="25" Width="94"/>
+        <TextBox x:Name="Logs" HorizontalAlignment="Left" Margin="42,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="719" Height="323"/>
+        <ComboBox x:Name="Source" HorizontalAlignment="Left" Margin="42,23,0,0" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
