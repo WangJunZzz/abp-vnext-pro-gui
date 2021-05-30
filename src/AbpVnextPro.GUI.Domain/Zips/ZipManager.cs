@@ -8,11 +8,11 @@ namespace AbpVnextPro.GUI.Domain.Zips
 {
     public class ZipManager : ISingletonDependency
     {
-        public string ExtractZips(string sourceZipFullPath)
+        public string ExtractZips(string sourceZipFullPath, string commpanyName, string projectName)
         {
             try
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "decompression");
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "code",commpanyName+projectName);
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);

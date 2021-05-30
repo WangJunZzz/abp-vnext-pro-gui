@@ -24,14 +24,14 @@ namespace AbpVnextPro.GUI.ApplicationService.Generates
         }
 
 
-        public async Task<string> DownloadSourceAsync()
+        public async Task<string> DownloadSourceAsync(string type)
         {
-            return await _githubManager.GetSourceCodeAsync();
+            return await _githubManager.GetSourceCodeAsync(type);
         }
 
-        public string ExtractZips(string path)
+        public string ExtractZips(string path,string commpanyName,string projectName)
         {
-            return _zipManager.ExtractZips(path);
+            return _zipManager.ExtractZips(path, commpanyName, projectName);
         }
 
         public void GenerateTemplate(string path, string companyName, string projectName)
