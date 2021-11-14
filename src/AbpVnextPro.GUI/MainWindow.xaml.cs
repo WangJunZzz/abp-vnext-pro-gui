@@ -4,6 +4,7 @@ using AbpVnextPro.GUI.Domain.Exceptions;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -73,6 +74,8 @@ namespace AbpVnextPro.GUI
                 _generateAppService.GenerateTemplate(zipPath, this.CompanyName.Text.Trim(), this.ProjectName.Text.Trim());
                 this.Logs.Text += $"{DateTime.Now.ToString() } {this.Source.Text} 模板生成成功. \r\n";
                 this.Logs.Text+= $"{DateTime.Now.ToString() } 代码已经生成在 {Directory.GetCurrentDirectory()}\\code下 \r\n";
+
+                Process.Start("explorer.exe", $"{Directory.GetCurrentDirectory()}\\code");
 
             }
             catch (Exception ex)

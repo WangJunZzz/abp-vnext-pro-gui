@@ -7,6 +7,6 @@
         /// <summary>
         /// 后台服务需替换的文件后缀
         /// </summary>
-        public const string FileFilter = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag";
+        public const string FileFilter = ".sln,.csproj,.cs,.cshtml,.json,.ci,.yml,.yaml,.nswag,.DotSettings,.env";
     }
 }
