@@ -2,8 +2,8 @@
 {
     public class ReplaceConsts
     {
-        public const string OldCompanyName = "CompanyName";
-        public const string OldProjectName = "ProjectName";
+        public const string OldCompanyName = "Lion";
+        public const string OldProjectName = "AbpPro";
         /// <summary>
         /// 后台服务需替换的文件后缀
         /// </summary>
