@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\..\common.props" />
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <RootNamespace>Lion.CodeGenerator</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Lion.CodeGenerator.Domain\Lion.CodeGenerator.Domain.csproj" />
+        <PackageReference Include="Volo.Abp.EntityFrameworkCore.MySQL" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.SettingManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.Identity.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.IdentityServer.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.TenantManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+        <PackageReference Include="Volo.Abp.FeatureManagement.EntityFrameworkCore" Version="$(AbpPackageVersion)" />
+		<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore" Version="$(LionAbpProPackageVersion)" />
+		<PackageReference Include="Lion.AbpPro.NotificationManagement.EntityFrameworkCore" Version="$(LionAbpProPackageVersion)" />
+		<PackageReference Include="Lion.AbpPro.FileManagement.EntityFrameworkCore" Version="$(LionAbpProPackageVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftVersion)">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+            <PrivateAssets>compile; contentFiles; build; buildMultitargeting; buildTransitive; analyzers; native</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>

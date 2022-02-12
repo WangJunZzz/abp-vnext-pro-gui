@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.CodeGenerator</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="$(MicrosoftAspNetCoreHttpAbstractionsVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.IdentityServer.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="$(MicrosoftVersion)" />
+	<PackageReference Include="Lion.AbpPro.Extension" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.NotificationManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.FileManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\CodeGenerator\*.json" />
+    <Content Remove="Localization\CodeGenerator\*.json" />
+  
+   
+  </ItemGroup>
+
+</Project>

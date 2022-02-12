@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.CodeGenerator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lion.CodeGenerator.Application.Contracts\Lion.CodeGenerator.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
+    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(AbpPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.NotificationManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.FileManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
+  </ItemGroup>
+
+</Project>

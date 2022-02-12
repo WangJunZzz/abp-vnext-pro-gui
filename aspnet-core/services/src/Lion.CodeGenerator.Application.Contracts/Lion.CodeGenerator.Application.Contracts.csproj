@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Lion.CodeGenerator</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lion.CodeGenerator.Domain.Shared\Lion.CodeGenerator.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.ObjectExtending" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="$(AbpPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Application.Contracts" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.NotificationManagement.Application.Contracts" Version="$(LionAbpProPackageVersion)" />
+	<PackageReference Include="Lion.AbpPro.FileManagement.Application.Contracts" Version="$(LionAbpProPackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AuditLogs\Dto\**" />
+  </ItemGroup>
+
+</Project>
