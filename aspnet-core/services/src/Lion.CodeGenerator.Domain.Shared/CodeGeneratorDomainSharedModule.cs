@@ -1,5 +1,7 @@
+using Lion.AbpPro;
 using Lion.AbpPro.DataDictionaryManagement;
 using Lion.AbpPro.FileManagement;
+using Lion.AbpPro.Localization;
 using Lion.AbpPro.NotificationManagement;
 using Lion.CodeGenerator.Localization;
 using Volo.Abp.AuditLogging;
@@ -22,17 +24,7 @@ using Volo.Abp.VirtualFileSystem;
 namespace Lion.CodeGenerator
 {
     [DependsOn(
-        typeof(AbpAuditLoggingDomainSharedModule),
-        typeof(AbpBackgroundJobsDomainSharedModule),
-        typeof(AbpFeatureManagementDomainSharedModule),
-        typeof(AbpIdentityDomainSharedModule),
-        typeof(AbpIdentityServerDomainSharedModule),
-        typeof(AbpPermissionManagementDomainSharedModule),
-        typeof(AbpSettingManagementDomainSharedModule),
-        typeof(AbpTenantManagementDomainSharedModule),
-        typeof(DataDictionaryManagementDomainSharedModule),
-        typeof(NotificationManagementDomainSharedModule),
-        typeof(FileManagementDomainSharedModule)
+        typeof(AbpProDomainSharedModule)
     )]
     public class CodeGeneratorDomainSharedModule : AbpModule
     {
@@ -57,6 +49,7 @@ namespace Lion.CodeGenerator
                     .AddBaseTypes(typeof(AbpLocalizationResource))
                     .AddBaseTypes(typeof(IdentityResource))
                     .AddBaseTypes(typeof(AbpTimingResource))
+                    .AddBaseTypes(typeof(AbpProResource))
                     .AddVirtualJson("/Localization/CodeGenerator");
 
                 options.DefaultResourceType = typeof(CodeGeneratorResource);

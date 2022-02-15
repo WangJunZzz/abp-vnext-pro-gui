@@ -1,3 +1,4 @@
+using Lion.AbpPro;
 using Localization.Resources.AbpUi;
 using Lion.CodeGenerator.Localization;
 using Volo.Abp.Account;
@@ -16,15 +17,7 @@ namespace Lion.CodeGenerator
 {
     [DependsOn(
         typeof(CodeGeneratorApplicationContractsModule),
-        typeof(AbpAccountHttpApiModule),
-        typeof(AbpIdentityHttpApiModule),
-        typeof(AbpPermissionManagementHttpApiModule),
-        typeof(AbpTenantManagementHttpApiModule),
-        typeof(AbpFeatureManagementHttpApiModule),
-        typeof(AbpSettingManagementHttpApiModule),
-        typeof(DataDictionaryManagementHttpApiModule),
-        typeof(NotificationManagementHttpApiModule),
-        typeof(FileManagementHttpApiModule)
+        typeof(AbpProHttpApiModule)
         )]
     public class CodeGeneratorHttpApiModule : AbpModule
     {
