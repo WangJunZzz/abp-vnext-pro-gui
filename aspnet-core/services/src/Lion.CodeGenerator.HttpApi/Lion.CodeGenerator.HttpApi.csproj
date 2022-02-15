@@ -12,16 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="$(SwashbuckleVersion)" />
-    <PackageReference Include="Volo.Abp.Account.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.Identity.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi" Version="$(AbpPackageVersion)" />
-    <PackageReference Include="Volo.Abp.SettingManagement.HttpApi" Version="$(AbpPackageVersion)" />
-	<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
-	<PackageReference Include="Lion.AbpPro.NotificationManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
-	<PackageReference Include="Lion.AbpPro.FileManagement.HttpApi" Version="$(LionAbpProPackageVersion)" />
+    <PackageReference Include="Lion.AbpPro.HttpApi" Version="$(LionAbpProPackageVersion)" />
   </ItemGroup>
 
 </Project>

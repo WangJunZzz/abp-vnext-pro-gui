@@ -1,39 +1,17 @@
+using Lion.AbpPro;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Lion.CodeGenerator.MultiTenancy;
-using Volo.Abp.AuditLogging;
-using Volo.Abp.BackgroundJobs;
 using Volo.Abp.Emailing;
-using Volo.Abp.FeatureManagement;
-using Volo.Abp.Identity;
-using Volo.Abp.IdentityServer;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
-using Volo.Abp.PermissionManagement.Identity;
-using Volo.Abp.PermissionManagement.IdentityServer;
-using Volo.Abp.SettingManagement;
-using Volo.Abp.TenantManagement;
-using Lion.AbpPro.NotificationManagement;
-using Lion.AbpPro.FileManagement;
-using Lion.AbpPro.DataDictionaryManagement;
+
 
 namespace Lion.CodeGenerator
 {
     [DependsOn(
         typeof(CodeGeneratorDomainSharedModule),
-        typeof(AbpAuditLoggingDomainModule),
-        typeof(AbpBackgroundJobsDomainModule),
-        typeof(AbpFeatureManagementDomainModule),
-        typeof(AbpIdentityDomainModule),
-        typeof(AbpPermissionManagementDomainIdentityModule),
-        typeof(AbpIdentityServerDomainModule),
-        typeof(AbpPermissionManagementDomainIdentityServerModule),
-        typeof(AbpSettingManagementDomainModule),
-        typeof(AbpTenantManagementDomainModule),
-        typeof(AbpEmailingModule),
-        typeof(DataDictionaryManagementDomainModule),
-        typeof(NotificationManagementDomainModule),
-        typeof(FileManagementDomainModule)
+        typeof(AbpProDomainModule)
     )]
     public class CodeGeneratorDomainModule : AbpModule
     {

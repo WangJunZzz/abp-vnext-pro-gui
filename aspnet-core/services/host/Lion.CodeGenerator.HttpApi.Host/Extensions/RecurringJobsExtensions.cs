@@ -1,4 +1,5 @@
 using Hangfire;
+using Lion.AbpPro.Jobs;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 

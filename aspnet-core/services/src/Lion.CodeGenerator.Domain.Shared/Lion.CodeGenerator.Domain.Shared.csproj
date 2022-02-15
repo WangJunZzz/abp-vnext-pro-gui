@@ -23,6 +23,7 @@
 	<PackageReference Include="Lion.AbpPro.DataDictionaryManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
 	<PackageReference Include="Lion.AbpPro.NotificationManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
 	<PackageReference Include="Lion.AbpPro.FileManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
+    <PackageReference Include="Lion.AbpPro.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
   </ItemGroup>
 
   <ItemGroup>

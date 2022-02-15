@@ -1,4 +1,3 @@
-using Lion.CodeGenerator.ConfigurationOptions;
 using Lion.CodeGenerator.EntityFrameworkCore;
 using Lion.CodeGenerator.MultiTenancy;
 using Hangfire;
@@ -39,6 +38,7 @@ using Lion.AbpPro.Shared.Hosting.Microservices;
 using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
 using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
 using Lion.AbpPro.CAP;
+using Lion.AbpPro.ConfigurationOptions;
 
 namespace Lion.CodeGenerator
 {

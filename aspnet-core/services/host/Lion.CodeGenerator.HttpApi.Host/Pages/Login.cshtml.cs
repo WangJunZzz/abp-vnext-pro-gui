@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using Lion.CodeGenerator.ConfigurationOptions;
-using Lion.CodeGenerator.Users;
-using Lion.CodeGenerator.Users.Dtos;
+using Lion.AbpPro.ConfigurationOptions;
+using Lion.AbpPro.Users;
+using Lion.AbpPro.Users.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Hosting;
