@@ -1,0 +1,35 @@
+﻿<Window x:Class="Lion.CodeGenerator.Tool.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lion.CodeGenerator.Tool"
+        xmlns:prism="http://prismlibrary.com/"
+        mc:Ignorable="d" Background="Transparent" WindowStartupLocation="CenterScreen"
+        FontFamily="Microsoft YaHei" FontSize="13" Foreground="#333" FontWeight="ExtraLight"
+        Title="代码生成器工具" Height="850" Width="1400">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" ResizeBorderThickness="4"/>
+    </WindowChrome.WindowChrome>
+    <DockPanel>
+        <!--左侧菜单-->
+        <Grid DockPanel.Dock="Left" Width="230" Background="#0b3d90">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Image Source="pack://application:,,,/Lion.CodeGenerator.Tool;component/Assets/Images/Logo.png" Width="70"
+                       Margin="0,30,0,0"/>
+                <TextBlock Text="Lion CodeGenerator" FontSize="20" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,30" Foreground="White"/>
+            </StackPanel>
+            <!--注册区域显示树形菜单-->
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="LeftMenuTreeRegion"/>
+        </Grid>
+        <!--主页头-->
+        <ContentControl prism:RegionManager.RegionName="MainHeaderRegion" Height="70" DockPanel.Dock="Top"/>
+        <!--页面显示区域-->
+        <TabControl prism:RegionManager.RegionName="MainViewRegion" Margin="5" BorderThickness="0"/>
+    </DockPanel>
+</Window>
