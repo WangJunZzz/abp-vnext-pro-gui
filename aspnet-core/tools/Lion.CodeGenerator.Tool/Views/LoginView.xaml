@@ -50,7 +50,6 @@
                 <TextBlock Text="2022 © Lion.CodeGenerator" Foreground="#88FFFFFF" VerticalAlignment="Bottom"
                        HorizontalAlignment="Center" FontSize="12" FontWeight="Bold" Margin="0,5"/>
             </Grid>
-
             <Grid Grid.Column="1" VerticalAlignment="Center" Margin="30,0,30,20">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -84,7 +83,6 @@
                     <Hyperlink >找回密码</Hyperlink>
                 </TextBlock>
             </Grid>
-
             <TextBlock Text="{Binding ErrorMessage}" Grid.Column="1" 
                    VerticalAlignment="Bottom" HorizontalAlignment="Center" TextAlignment="Center"
                    FontSize="11" Foreground="Red" TextWrapping="Wrap" Margin="30,0,30,10"/>
