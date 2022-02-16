@@ -15,4 +15,8 @@
     <PackageReference Include="Lion.AbpPro.Domain" Version="$(LionAbpProPackageVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EntityModels\Aggregates" />
+  </ItemGroup>
+
 </Project>

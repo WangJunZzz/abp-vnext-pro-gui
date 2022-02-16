@@ -389,7 +389,7 @@ namespace Lion.CodeGenerator.Migrations
 
                     b.HasIndex("TenantId", "Id");
 
-                    b.ToTable("BusinessLine", (string)null);
+                    b.ToTable("Gen_BusinessLine", (string)null);
                 });
 
             modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessProject", b =>
@@ -427,7 +427,7 @@ namespace Lion.CodeGenerator.Migrations
 
                     b.HasKey("BusinessLineId", "BusinessProjectId");
 
-                    b.ToTable("BusinessProject", (string)null);
+                    b.ToTable("Gen_BusinessProject", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

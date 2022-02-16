@@ -62,8 +62,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.CodeGenerator.Tool.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.CodeGenerator.Tool.Application.Contracts", "tools\Lion.CodeGenerator.Tool.Application.Contracts\Lion.CodeGenerator.Tool.Application.Contracts.csproj", "{F25DE7C6-4F16-4D5E-9CE1-8ECA86AE8CD9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lion.CodeGenerator.Tool.System", "tools\modules\Lion.CodeGenerator.Tool.System\Lion.CodeGenerator.Tool.System.csproj", "{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -146,10 +144,6 @@ Global
 		{F25DE7C6-4F16-4D5E-9CE1-8ECA86AE8CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F25DE7C6-4F16-4D5E-9CE1-8ECA86AE8CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F25DE7C6-4F16-4D5E-9CE1-8ECA86AE8CD9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -178,7 +172,6 @@ Global
 		{28739570-4C60-43C3-ABB4-567369003F3B} = {7EBB1B24-7EF9-46E1-A6C4-F498AE08B996}
 		{A6E2D5C0-BA83-4D02-8BC3-B08870C6E4CB} = {7EBB1B24-7EF9-46E1-A6C4-F498AE08B996}
 		{F25DE7C6-4F16-4D5E-9CE1-8ECA86AE8CD9} = {7EBB1B24-7EF9-46E1-A6C4-F498AE08B996}
-		{360DB0DD-5CCB-4DAE-8DE4-23B0677A30F4} = {F16CE322-5D73-4222-90F2-53F54D27627F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

@@ -12,7 +12,7 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Lion.CodeGenerator.Migrations
 {
     [DbContext(typeof(CodeGeneratorDbContext))]
-    [Migration("20220215130856_Init")]
+    [Migration("20220216150945_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -324,6 +324,112 @@ namespace Lion.CodeGenerator.Migrations
                     b.HasIndex("NotificationId");
 
                     b.ToTable("NotificationSubscription", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessLine", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TenantId", "Id");
+
+                    b.ToTable("Gen_BusinessLine", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessProject", b =>
+                {
+                    b.Property<Guid>("BusinessLineId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("BusinessProjectId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(512)
+                        .HasColumnType("varchar(512)");
+
+                    b.Property<bool>("Enable")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.Property<string>("NameSpace")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
+
+                    b.HasKey("BusinessLineId", "BusinessProjectId");
+
+                    b.ToTable("Gen_BusinessProject", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -2258,6 +2364,15 @@ namespace Lion.CodeGenerator.Migrations
                         .HasForeignKey("NotificationId");
                 });
 
+            modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessProject", b =>
+                {
+                    b.HasOne("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessLine", null)
+                        .WithMany("BusinessProjects")
+                        .HasForeignKey("BusinessLineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -2543,6 +2658,11 @@ namespace Lion.CodeGenerator.Migrations
             modelBuilder.Entity("Lion.AbpPro.NotificationManagement.Notifications.Aggregates.Notification", b =>
                 {
                     b.Navigation("NotificationSubscriptions");
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessLine", b =>
+                {
+                    b.Navigation("BusinessProjects");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
