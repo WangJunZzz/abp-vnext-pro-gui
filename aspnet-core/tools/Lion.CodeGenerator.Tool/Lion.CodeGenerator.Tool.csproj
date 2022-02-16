@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<RootNamespace>Lion.CodeGenerator.Tool</RootNamespace>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Assets\Images\login_back.jpg" />
+	  <None Remove="Assets\Images\Logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Assets\Images\login_back.jpg">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Resource>
+	  <Resource Include="Assets\Images\Logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+		<PackageReference Include="Prism.Unity" Version="8.1.97" />
+	</ItemGroup>
+
+</Project>
