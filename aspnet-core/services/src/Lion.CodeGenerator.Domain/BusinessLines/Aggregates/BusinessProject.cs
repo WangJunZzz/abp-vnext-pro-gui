@@ -9,6 +9,20 @@ namespace Lion.CodeGenerator.BusinessLines.Aggregates;
 /// </summary>
 public class BusinessProject : CreationAuditedEntity
 {
+    private BusinessProject()
+    {
+        
+    }
+    public BusinessProject(Guid businessProjectId, Guid businessLineId, string name, string nameSpace, bool enable, string description)
+    {
+        BusinessProjectId = businessProjectId;
+        BusinessLineId = businessLineId;
+        Name = name;
+        NameSpace = nameSpace;
+        Enable = enable;
+        Description = description;
+    }
+
     public Guid BusinessProjectId { get; private set; }
 
     /// <summary>
@@ -42,14 +56,13 @@ public class BusinessProject : CreationAuditedEntity
     [MaxLength(512)]
     public string Description { get; private set; }
 
-    protected BusinessProject()
-    {
-        
-    }
-    
+
     
     public override object[] GetKeys()
     {
         return new object[] { BusinessLineId, BusinessProjectId };
     }
+    
+    
+    
 }

@@ -1,5 +1,7 @@
+using Lion.CodeGenerator.BusinessLines.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace Lion.CodeGenerator.EntityFrameworkCore
 {
@@ -9,14 +11,21 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
         {
             Check.NotNull(builder, nameof(builder));
 
-            /* Configure your own tables/entities inside here */
-
-            //builder.Entity<YourEntity>(b =>
-            //{
-            //    b.ToTable(CodeGeneratorConsts.DbTablePrefix + "YourEntities", CodeGeneratorConsts.DbSchema);
-            //    b.ConfigureByConvention(); //auto configure for the base class props
-            //    //...
-            //});
+            builder.Entity<BusinessLine>(b =>
+            {
+                b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(BusinessLine), CodeGeneratorDbProperties.DbSchema);
+                b.ConfigureByConvention();
+                b.HasIndex(x => new { x.TenantId, x.Id });
+                b.ApplyObjectExtensionMappings();
+            });
+            
+            builder.Entity<BusinessProject>(b =>
+            {
+                b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(BusinessProject), CodeGeneratorDbProperties.DbSchema);
+                b.ConfigureByConvention();
+                b.HasKey(x => new { x.BusinessLineId, x.BusinessProjectId });
+                b.ApplyObjectExtensionMappings();
+            });
         }
     }
 }

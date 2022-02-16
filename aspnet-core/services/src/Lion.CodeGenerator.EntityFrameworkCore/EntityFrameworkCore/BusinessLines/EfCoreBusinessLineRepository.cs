@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lion.CodeGenerator.BusinessLines;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 
@@ -18,5 +19,11 @@ public class EfCoreBusinessLineRepository: EfCoreRepository<ICodeGeneratorDbCont
     public override async Task<IQueryable<BusinessLine>> WithDetailsAsync()
     {
         return (await GetQueryableAsync()).IncludeDetails();
+    }
+
+    public async Task<BusinessLine> FindByNameAsync(string name, bool includeDetails = true)
+    {
+        return await (await GetDbSetAsync()).IncludeDetails(includeDetails).FirstOrDefaultAsync(e => e.Name == name);
+
     }
 }

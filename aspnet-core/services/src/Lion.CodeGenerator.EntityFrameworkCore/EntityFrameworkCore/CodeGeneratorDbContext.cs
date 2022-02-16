@@ -2,6 +2,7 @@ using Lion.AbpPro.DataDictionaryManagement.EntityFrameworkCore;
 using Lion.AbpPro.FileManagement.EntityFrameworkCore;
 using Lion.AbpPro.FileManagement.Files;
 using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
+using Lion.CodeGenerator.BusinessLines.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -57,6 +58,8 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
         public DbSet<BackgroundJobRecord> BackgroundJobs { get; }
         public DbSet<AuditLog> AuditLogs { get; }
         public DbSet<File> Files { get; }
+        
+        public DbSet<BusinessLine> BusinessLines { get; }
         
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside CodeGeneratorDbContextModelCreatingExtensions.ConfigureCodeGenerator

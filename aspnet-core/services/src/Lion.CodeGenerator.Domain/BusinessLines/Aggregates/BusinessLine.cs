@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
@@ -11,6 +13,20 @@ namespace Lion.CodeGenerator.BusinessLines.Aggregates;
 /// </summary>
 public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
 {
+    private BusinessLine()
+    {
+        BusinessProjects = new List<BusinessProject>();
+    }
+
+    public BusinessLine(Guid id, string name, bool enable, string description, Guid? tenantId) : base(id)
+    {
+        TenantId = tenantId;
+        Name = name;
+        Enable = enable;
+        Description = description;
+        BusinessProjects = new List<BusinessProject>();
+    }
+
     /// <summary>
     /// 租户
     /// </summary>
@@ -27,7 +43,7 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// 启用禁用
     /// </summary>
     public bool Enable { get; private set; }
-    
+
     /// <summary>
     /// 描述
     /// </summary>
@@ -35,4 +51,12 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     public string Description { get; private set; }
 
     public List<BusinessProject> BusinessProjects { get; private set; }
+
+    public void AddBusinessProject(Guid businessProjectId, Guid businessLineId, string name, string nameSpace, bool enable, string description)
+    {
+        Check.NotNullOrWhiteSpace(name, nameof(name));
+        Check.NotNullOrWhiteSpace(nameSpace, nameof(nameSpace));
+        if (BusinessProjects.Any(e => e.Name == name)) throw new UserFriendlyException("当前业务线下已存在该项目");
+        BusinessProjects.Add(new BusinessProject(businessProjectId, businessLineId, name, nameSpace, enable, description));
+    }
 }
