@@ -115,8 +115,9 @@ namespace Lion.CodeGenerator.Data
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Logger.LogWarning("AddInitialMigrationIfNotExist : " + ex.Message);
                 return false;
             }
 
@@ -150,7 +151,8 @@ namespace Lion.CodeGenerator.Data
         {
             var dbMigrationsProjectFolder = GetDbMigrationsProjectFolderPath();
 
-            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "EntityFrameworkCore"));
+            //return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "EntityFrameworkCore"));
+            return Directory.Exists(Path.Combine(dbMigrationsProjectFolder, "Migrations"));
         }
 
         private void AddInitialMigration()
@@ -194,10 +196,11 @@ namespace Lion.CodeGenerator.Data
                 throw new Exception("Solution folder not found!");
             }
 
-            var srcDirectoryPath = Path.Combine(slnDirectoryPath, "src");
+            var srcDirectoryPath = Path.Combine(slnDirectoryPath, "services","src");
 
             return Directory.GetDirectories(srcDirectoryPath)
-                .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+                // .FirstOrDefault(d => d.EndsWith(".DbMigrations"));
+                .FirstOrDefault(d => d.EndsWith(".EntityFrameworkCore"));
         }
 
         private string GetSolutionDirectoryPath()
