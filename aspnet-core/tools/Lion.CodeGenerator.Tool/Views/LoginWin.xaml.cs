@@ -19,9 +19,9 @@ namespace Lion.CodeGenerator.Tool.Views
     /// <summary>
     /// LoginView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView : Window
+    public partial class LoginWin : Window
     {
-        public LoginView(IEventAggregator ea)
+        public LoginWin(IEventAggregator ea)
         {
             InitializeComponent();
 

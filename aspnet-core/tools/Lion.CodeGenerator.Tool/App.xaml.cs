@@ -20,7 +20,7 @@ namespace Lion.CodeGenerator.Tool
 
         protected override void InitializeShell(Window shell)
         {
-            if (Container.Resolve<LoginView>().ShowDialog() == false)
+            if (Container.Resolve<LoginWin>().ShowDialog() == false)
                 Current.Shutdown();
         }
 
