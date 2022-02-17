@@ -1,17 +1,31 @@
 ﻿using System;
+using Volo.Abp.Domain.Entities;
 
 namespace Lion.CodeGenerator.AggregateModels;
 
-public class EntityProperty
+public class AggregateProperty : Entity<Guid>
 {
-    public Guid EntityId { get; private set; }
 
+    public Guid AggregateModelId { get; private set; }
+    
+    /// <summary>
+    /// 聚合根属性Code
+    /// </summary>
     public string Code { get; private set; }
 
+    /// <summary>
+    /// 聚合根属性名称
+    /// </summary>
     public string Name { get; private set; }
 
+    /// <summary>
+    /// 是否必填
+    /// </summary>
     public bool IsRequired { get; private set; }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public bool IsEnum { get; private set; }
 
     /// <summary>
