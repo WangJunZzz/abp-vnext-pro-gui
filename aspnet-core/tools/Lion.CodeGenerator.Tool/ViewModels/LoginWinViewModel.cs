@@ -1,6 +1,7 @@
 ﻿using Lion.CodeGenerator.Tool.Models;
 using Prism.Commands;
 using Prism.Mvvm;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -21,7 +22,7 @@ namespace Lion.CodeGenerator.Tool.ViewModels
         public bool IsLoading
         {
             get { return _isLoading; }
-            set { _isLoading = value; }
+            set { SetProperty(ref _isLoading, value); }
         }
 
         private string _loadingMessage;
@@ -29,7 +30,7 @@ namespace Lion.CodeGenerator.Tool.ViewModels
         public string LoadingMessage
         {
             get { return _loadingMessage; }
-            set { _loadingMessage = value; }
+            set { SetProperty(ref _loadingMessage, value); }
         }
 
         private string _errorMessage;
@@ -60,9 +61,19 @@ namespace Lion.CodeGenerator.Tool.ViewModels
                 return;
             }
 
-            // 开始登录
-            MessageBox.Show("接口对接中...");
+            this.LoadingMessage = "正在登录....";
+            this.IsLoading = true;
 
+            try
+            {
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
 
         }
     }

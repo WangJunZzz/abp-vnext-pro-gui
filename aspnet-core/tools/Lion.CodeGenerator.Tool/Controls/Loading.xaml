@@ -105,42 +105,42 @@
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt1"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e1"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e1"/>
             </Border>
             <Border RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt2"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e2"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e2"/>
             </Border>
             <Border RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt3"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e3"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e3"/>
             </Border>
             <Border RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt4"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e4"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e4"/>
             </Border>
             <Border RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt5"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e5"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e5"/>
             </Border>
             <Border RenderTransformOrigin="0.5,0.5">
                 <Border.RenderTransform>
                     <RotateTransform Angle="0" x:Name="rt6"/>
                 </Border.RenderTransform>
-                <Ellipse Fill="Orange" Width="8" Height="8" VerticalAlignment="Bottom" Name="e6"/>
+                <Ellipse Fill="#2196f3" Width="8" Height="8" VerticalAlignment="Bottom" Name="e6"/>
             </Border>
         </Grid>
 
         <TextBlock Text="{Binding Message,RelativeSource={RelativeSource AncestorType=UserControl,Mode=FindAncestor}}"
-                   Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333"
+                   Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Foreground="#333"
                    Margin="0,10"/>
     </Grid>
 </UserControl>

@@ -115,7 +115,7 @@
         </Grid>
 
         <!--Loading动画-->
-        <!--<loading:Loading Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" Message="{Binding LoadingMessage}"
-                     Background="Transparent"/>-->
+        <loading:Loading Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" Message="{Binding LoadingMessage}"
+                     Background="Black"  Opacity="0.7"/>
     </Grid>
 </Window>
