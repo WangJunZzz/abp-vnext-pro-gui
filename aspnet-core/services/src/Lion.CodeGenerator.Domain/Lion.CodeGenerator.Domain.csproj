@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DataTypes" />
     <Folder Include="EntityModels\Aggregates" />
   </ItemGroup>
 

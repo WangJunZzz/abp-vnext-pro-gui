@@ -16,14 +16,16 @@ public class EfCoreBusinessLineRepository: EfCoreRepository<ICodeGeneratorDbCont
     }
     
     
-    public override async Task<IQueryable<BusinessLine>> WithDetailsAsync()
-    {
-        return (await GetQueryableAsync()).IncludeDetails();
-    }
+
 
     public async Task<BusinessLine> FindByNameAsync(string name, bool includeDetails = true)
     {
         return await (await GetDbSetAsync()).IncludeDetails(includeDetails).FirstOrDefaultAsync(e => e.Name == name);
 
+    }
+    
+    public override async Task<IQueryable<BusinessLine>> WithDetailsAsync()
+    {
+        return (await GetQueryableAsync()).IncludeDetails();
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Lion.CodeGenerator.AggregateModels;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -14,5 +15,6 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
     public interface ICodeGeneratorDbContext : IEfCoreDbContext
     {
         DbSet<BusinessLine> BusinessLines { get; }
+        public DbSet<AggregateModel> AggregateModels { get; }
     }
 }
