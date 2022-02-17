@@ -40,12 +40,12 @@ namespace Lion.CodeGenerator.Data
 
         public async Task MigrateAsync()
         {
-            var initialMigrationAdded = AddInitialMigrationIfNotExist();
+            //var initialMigrationAdded = AddInitialMigrationIfNotExist();
 
-            if (initialMigrationAdded)
-            {
-                return;
-            }
+            //if (initialMigrationAdded)
+            //{
+            //    return;
+            //}
 
             Logger.LogInformation("Started database migrations...");
 
