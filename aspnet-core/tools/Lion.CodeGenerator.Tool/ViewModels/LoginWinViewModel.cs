@@ -1,4 +1,7 @@
-﻿using Lion.CodeGenerator.Tool.Models;
+﻿using Lion.AbpPro.Tenants;
+using Lion.AbpPro.Tenants.Dtos;
+using Lion.AbpPro.Users;
+using Lion.CodeGenerator.Tool.Models;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -12,9 +15,16 @@ namespace Lion.CodeGenerator.Tool.ViewModels
         public ICommand LoginCommand { get; set; }
         public UserModel UserModel { get; set; } = new UserModel();
 
-        public LoginWinViewModel()
+        private readonly IVoloTenantAppService _tenantAppService;
+        private readonly IAccountAppService _accountAppService;
+        public LoginWinViewModel(
+            //IVoloTenantAppService tenantAppService,
+            //IAccountAppService accountAppService
+            )
         {
             LoginCommand = new DelegateCommand<object>(OnLogin);
+            //this._tenantAppService = tenantAppService;
+            //this._accountAppService = accountAppService;
         }
 
         private bool _isLoading;
@@ -35,13 +45,14 @@ namespace Lion.CodeGenerator.Tool.ViewModels
 
         private string _errorMessage;
 
+
         public string ErrorMessage
         {
             get { return _errorMessage; }
             set { SetProperty(ref _errorMessage, value); }
         }
 
-        private void OnLogin(object obj)
+        private async void OnLogin(object obj)
         {
             if (string.IsNullOrEmpty(UserModel.TenantName))
             {
@@ -66,6 +77,14 @@ namespace Lion.CodeGenerator.Tool.ViewModels
 
             try
             {
+                var input = new FindTenantByNameInput();
+                input.Name = UserModel.TenantName;
+                var tenantResultDto = await _tenantAppService.FindTenantByNameAsync(input);
+                if (tenantResultDto == null || tenantResultDto.Success == false)
+                {
+                    MessageBox.Show($"租户：{input.Name}不存在.");
+                    return;
+                }
 
 
             }
