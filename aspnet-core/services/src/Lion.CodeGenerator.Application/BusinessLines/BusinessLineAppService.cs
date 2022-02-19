@@ -1,11 +1,5 @@
-﻿using Lion.AbpPro.Extension.Customs.Dtos;
+﻿using System.Threading.Tasks;
 using Lion.CodeGenerator.BusinessLines.Dto;
-using Lion.CodeGenerator.BusinessLines.Dtos;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
 
 namespace Lion.CodeGenerator.BusinessLines;
 
@@ -18,41 +12,13 @@ public class BusinessLineAppService : CodeGeneratorAppService, IBusinessLineAppS
         _businessLineManager = businessLineManager;
     }
 
-    public async Task<PagedResultDto<BusinessLineOutput>> GetPagedListAsync(
-        PagingBusinessLineListInput input, CancellationToken cancellationToken = default)
+    public Task CreateBusinessLineAsync(CreateBusinessLineInput input)
     {
-        var result = new PagedResultDto<BusinessLineOutput>();
-
-        var pagedResultDto = await _businessLineManager.GetPagedListAsync(input.Filter, input.PageSize, input.SkipCount, cancellationToken);
-        result.Items = ObjectMapper.Map<List<BusinessLineDto>, List<BusinessLineOutput>>(pagedResultDto.Items?.ToList());
-        result.TotalCount = pagedResultDto.TotalCount;
-
-        return result;
+        return _businessLineManager.CreateBusinessLineAsync(input.Name, input.Description);
     }
 
-    public async Task<BusinessLineOutput> CreateBusinessLineAsync(CreateBusinessLineInput input)
+    public Task CreateBusinessProjectAsync(CreateBusinessProjectInput input)
     {
-        var businessLineDto = await _businessLineManager.CreateBusinessLineAsync(input.Name, input.Description);
-
-        return ObjectMapper.Map<BusinessLineDto, BusinessLineOutput>(businessLineDto);
-    }
-
-    public async Task<BusinessLineOutput> UpdateBusinessLineAsync(UpdateBusinessLineInput input)
-    {
-        var businessLineDto = await _businessLineManager.UpdateBusinessLineAsync(input.Name, input.Description, input.Enable);
-
-        return ObjectMapper.Map<BusinessLineDto, BusinessLineOutput>(businessLineDto);
-    }
-
-    public async Task DeleteAsync(IdInput input)
-    {
-        await _businessLineManager.DeleteAsync(input.Id);
-    }
-
-    public async Task<BusinessProjectOutput> CreateBusinessProjectAsync(CreateBusinessProjectInput input)
-    {
-        var businessProjectDto = await _businessLineManager.CreateBusinessProjectAsync(input.BusinessLineId, input.Name, input.NameSpace, input.Description);
-
-        return ObjectMapper.Map<BusinessProjectDto, BusinessProjectOutput>(businessProjectDto);
+        return _businessLineManager.CreateBusinessProjectAsync(input.BusinessLineId, input.Name, input.NameSpace, input.Description);
     }
 }

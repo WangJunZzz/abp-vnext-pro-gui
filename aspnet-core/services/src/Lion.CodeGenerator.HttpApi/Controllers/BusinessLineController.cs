@@ -1,15 +1,13 @@
-﻿using Lion.AbpPro.Extension.Customs.Dtos;
+﻿using System.Threading.Tasks;
 using Lion.CodeGenerator.BusinessLines;
 using Lion.CodeGenerator.BusinessLines.Dto;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using System.Threading;
-using System.Threading.Tasks;
-using Volo.Abp.Application.Dtos;
+using Volo.Abp.Auditing;
 
 namespace Lion.CodeGenerator.Controllers;
 
-[Route("api/codeGenerator/businessLines")]
+[Route("BusinessLines")]
 public class BusinessLineController : CodeGeneratorController, IBusinessLineAppService
 {
     private readonly IBusinessLineAppService _businessLineAppService;
@@ -19,37 +17,16 @@ public class BusinessLineController : CodeGeneratorController, IBusinessLineAppS
         _businessLineAppService = businessLineAppService;
     }
 
-    [HttpPost("page")]
-    [SwaggerOperation(summary: "分页获取业务线信息", Tags = new[] { "BusinessLines" })]
-    public Task<PagedResultDto<BusinessLineOutput>> GetPagedListAsync(PagingBusinessLineListInput input, CancellationToken cancellationToken = default)
-    {
-        return _businessLineAppService.GetPagedListAsync(input);
-    }
-
-    [HttpPost("create")]
+    [HttpPost("CreateBusinessLine")]
     [SwaggerOperation(summary: "创建业务线", Tags = new[] { "BusinessLines" })]
-    public Task<BusinessLineOutput> CreateBusinessLineAsync(CreateBusinessLineInput input)
+    public Task CreateBusinessLineAsync(CreateBusinessLineInput input)
     {
         return _businessLineAppService.CreateBusinessLineAsync(input);
     }
-
-    [HttpPost("update")]
-    [SwaggerOperation(summary: "编辑业务线", Tags = new[] { "BusinessLines" })]
-    public Task<BusinessLineOutput> UpdateBusinessLineAsync(UpdateBusinessLineInput input)
-    {
-        return _businessLineAppService.UpdateBusinessLineAsync(input);
-    }
-
-    [HttpPost("delete")]
-    [SwaggerOperation(summary: "删除业务线", Tags = new[] { "BusinessLines" })]
-    public Task DeleteAsync(IdInput input)
-    {
-        return _businessLineAppService.DeleteAsync(input);
-    }
-
-    [HttpPost("create-business-project")]
+    
+    [HttpPost("CreateBusinessProject")]
     [SwaggerOperation(summary: "创建业务线下项目", Tags = new[] { "BusinessLines" })]
-    public Task<BusinessProjectOutput> CreateBusinessProjectAsync(CreateBusinessProjectInput input)
+    public Task CreateBusinessProjectAsync(CreateBusinessProjectInput input)
     {
         return _businessLineAppService.CreateBusinessProjectAsync(input);
     }
