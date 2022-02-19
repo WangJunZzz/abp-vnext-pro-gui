@@ -13,13 +13,13 @@ public class BusinessProject : CreationAuditedEntity
     {
         
     }
-    public BusinessProject(Guid businessProjectId, Guid businessLineId, string name, string nameSpace, bool enable, string description)
+    public BusinessProject(Guid businessProjectId, Guid businessLineId, string name, string nameSpace, bool disabled, string description)
     {
         BusinessProjectId = businessProjectId;
         BusinessLineId = businessLineId;
         Name = name;
         NameSpace = nameSpace;
-        Enable = enable;
+        Disabled = disabled;
         Description = description;
     }
 
@@ -48,7 +48,7 @@ public class BusinessProject : CreationAuditedEntity
     /// <summary>
     /// 启用禁用
     /// </summary>
-    public bool Enable { get; private set; }
+    public bool Disabled { get; private set; }
     
     /// <summary>
     /// 描述

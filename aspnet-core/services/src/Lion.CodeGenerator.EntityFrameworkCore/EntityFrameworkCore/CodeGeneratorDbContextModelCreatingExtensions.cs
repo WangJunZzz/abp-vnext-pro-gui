@@ -1,4 +1,5 @@
 using Lion.CodeGenerator.AggregateModels;
+using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;

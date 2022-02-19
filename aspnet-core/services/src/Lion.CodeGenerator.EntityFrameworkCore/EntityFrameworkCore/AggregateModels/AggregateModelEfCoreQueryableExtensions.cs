@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using Lion.CodeGenerator.AggregateModels;
-using Lion.CodeGenerator.BusinessLines.Aggregates;
+using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Microsoft.EntityFrameworkCore;
 
-namespace Lion.CodeGenerator.EntityFrameworkCore.BusinessLines;
+namespace Lion.CodeGenerator.EntityFrameworkCore.AggregateModels;
 
 public static class AggregateModelEfCoreQueryableExtensions
 {

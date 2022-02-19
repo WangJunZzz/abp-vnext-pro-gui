@@ -1,9 +1,10 @@
 using Hangfire;
 using Lion.AbpPro.Jobs;
+using Lion.CodeGenerator.Extensions.Hangfire;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 
-namespace Lion.CodeGenerator.Jobs
+namespace Lion.CodeGenerator.Extensions
 {
     public static class RecurringJobsExtensions
     {

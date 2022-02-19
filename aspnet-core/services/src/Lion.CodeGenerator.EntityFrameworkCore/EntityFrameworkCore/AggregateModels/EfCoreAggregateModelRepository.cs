@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Lion.CodeGenerator.AggregateModels;
+using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Lion.CodeGenerator.EntityFrameworkCore.BusinessLines;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;

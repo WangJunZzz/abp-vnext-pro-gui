@@ -1,4 +1,4 @@
-﻿namespace Lion.CodeGenerator.Tool.Application.Contracts
+﻿namespace Lion.CodeGenerator.Tool
 {
     public class CodeGeneratorToolApplicationContractsModule
     {

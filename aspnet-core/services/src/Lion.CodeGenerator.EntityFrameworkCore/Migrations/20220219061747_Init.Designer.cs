@@ -12,8 +12,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Lion.CodeGenerator.Migrations
 {
     [DbContext(typeof(CodeGeneratorDbContext))]
-    [Migration("20220217152229_Add-AggregateModel")]
-    partial class AddAggregateModel
+    [Migration("20220219061747_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -326,7 +326,7 @@ namespace Lion.CodeGenerator.Migrations
                     b.ToTable("NotificationSubscription", (string)null);
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.AggregateModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.AggregateModel", b =>
                 {
                     b.Property<Guid?>("TenantId")
                         .HasColumnType("char(36)")
@@ -392,7 +392,7 @@ namespace Lion.CodeGenerator.Migrations
                     b.ToTable("Gen_AggregateModel", (string)null);
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.EntityModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.EntityModel", b =>
                 {
                     b.Property<Guid>("AggregateModelId")
                         .HasColumnType("char(36)");
@@ -429,7 +429,7 @@ namespace Lion.CodeGenerator.Migrations
                     b.ToTable("Gen_EntityModel", (string)null);
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.PropertyModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.PropertyModel", b =>
                 {
                     b.Property<Guid>("AggregateModelId")
                         .HasColumnType("char(36)");
@@ -520,7 +520,7 @@ namespace Lion.CodeGenerator.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("varchar(512)");
 
-                    b.Property<bool>("Enable")
+                    b.Property<bool>("Disabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("ExtraProperties")
@@ -577,7 +577,7 @@ namespace Lion.CodeGenerator.Migrations
                         .HasMaxLength(512)
                         .HasColumnType("varchar(512)");
 
-                    b.Property<bool>("Enable")
+                    b.Property<bool>("Disabled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Name")
@@ -2527,22 +2527,22 @@ namespace Lion.CodeGenerator.Migrations
                         .HasForeignKey("NotificationId");
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.EntityModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.EntityModel", b =>
                 {
-                    b.HasOne("Lion.CodeGenerator.AggregateModels.AggregateModel", null)
+                    b.HasOne("Lion.CodeGenerator.AggregateModels.Aggregates.AggregateModel", null)
                         .WithMany("EntityModels")
                         .HasForeignKey("AggregateModelTenantId", "AggregateModelBusinessLineId", "AggregateModelBusinessProjectId", "AggregateModelCode")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.PropertyModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.PropertyModel", b =>
                 {
-                    b.HasOne("Lion.CodeGenerator.AggregateModels.EntityModel", null)
+                    b.HasOne("Lion.CodeGenerator.AggregateModels.Aggregates.EntityModel", null)
                         .WithMany("Properties")
                         .HasForeignKey("EntityModelAggregateModelId", "EntityModelCode");
 
-                    b.HasOne("Lion.CodeGenerator.AggregateModels.AggregateModel", null)
+                    b.HasOne("Lion.CodeGenerator.AggregateModels.Aggregates.AggregateModel", null)
                         .WithMany("Properties")
                         .HasForeignKey("AggregateModelTenantId", "AggregateModelBusinessLineId", "AggregateModelBusinessProjectId", "AggregateModelCode")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -2845,14 +2845,14 @@ namespace Lion.CodeGenerator.Migrations
                     b.Navigation("NotificationSubscriptions");
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.AggregateModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.AggregateModel", b =>
                 {
                     b.Navigation("EntityModels");
 
                     b.Navigation("Properties");
                 });
 
-            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.EntityModel", b =>
+            modelBuilder.Entity("Lion.CodeGenerator.AggregateModels.Aggregates.EntityModel", b =>
                 {
                     b.Navigation("Properties");
                 });

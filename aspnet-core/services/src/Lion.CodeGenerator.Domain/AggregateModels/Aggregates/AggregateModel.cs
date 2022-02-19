@@ -5,7 +5,7 @@ using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
-namespace Lion.CodeGenerator.AggregateModels;
+namespace Lion.CodeGenerator.AggregateModels.Aggregates;
 
 /// <summary>
 /// 聚合根模型

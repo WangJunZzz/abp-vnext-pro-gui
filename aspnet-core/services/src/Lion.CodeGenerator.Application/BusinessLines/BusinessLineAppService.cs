@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.CodeGenerator.BusinessLines.Dto;
 
 namespace Lion.CodeGenerator.BusinessLines;
@@ -10,6 +11,11 @@ public class BusinessLineAppService : CodeGeneratorAppService, IBusinessLineAppS
     public BusinessLineAppService(BusinessLineManager businessLineManager)
     {
         _businessLineManager = businessLineManager;
+    }
+
+    public Task<CustomePagedResultDto<PagingBusinessLineOutput>> PagingAsync(PagingBusinessLineInput input)
+    {
+        return _businessLineManager.PagingAsync(input);
     }
 
     public Task CreateBusinessLineAsync(CreateBusinessLineInput input)

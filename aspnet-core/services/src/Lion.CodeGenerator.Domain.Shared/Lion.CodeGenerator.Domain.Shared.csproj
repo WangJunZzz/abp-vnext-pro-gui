@@ -24,6 +24,8 @@
 	<PackageReference Include="Lion.AbpPro.NotificationManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
 	<PackageReference Include="Lion.AbpPro.FileManagement.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
     <PackageReference Include="Lion.AbpPro.Domain.Shared" Version="$(LionAbpProPackageVersion)" />
+    <PackageReference Include="FreeSql" Version="$(FreesqlVersion)" />
+    <PackageReference Include="FreeSql.Provider.MySql" Version="$(FreesqlVersion)" />
   </ItemGroup>
 
   <ItemGroup>

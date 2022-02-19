@@ -1,4 +1,5 @@
 using Lion.AbpPro;
+using Lion.CodeGenerator.FreeSqlRepository;
 using Volo.Abp.AutoMapper;
 using Volo.Abp.Modularity;
 
@@ -7,7 +8,8 @@ namespace Lion.CodeGenerator
     [DependsOn(
         typeof(CodeGeneratorDomainModule),
         typeof(CodeGeneratorApplicationContractsModule),
-        typeof(AbpProApplicationModule)
+        typeof(AbpProApplicationModule),
+        typeof(CodeGeneratorFreeSqlModule)
         )]
     public class CodeGeneratorApplicationModule : AbpModule
     {

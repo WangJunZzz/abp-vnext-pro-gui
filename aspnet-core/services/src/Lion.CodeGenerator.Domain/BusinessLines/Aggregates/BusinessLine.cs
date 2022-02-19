@@ -18,11 +18,11 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
         BusinessProjects = new List<BusinessProject>();
     }
 
-    public BusinessLine(Guid id, string name, bool enable, string description, Guid? tenantId) : base(id)
+    public BusinessLine(Guid id, string name, bool disabled, string description, Guid? tenantId) : base(id)
     {
         TenantId = tenantId;
         Name = name;
-        Enable = enable;
+        Disabled = disabled;
         Description = description;
         BusinessProjects = new List<BusinessProject>();
     }
@@ -42,7 +42,7 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <summary>
     /// 启用禁用
     /// </summary>
-    public bool Enable { get; private set; }
+    public bool Disabled { get; private set; }
 
     /// <summary>
     /// 描述
