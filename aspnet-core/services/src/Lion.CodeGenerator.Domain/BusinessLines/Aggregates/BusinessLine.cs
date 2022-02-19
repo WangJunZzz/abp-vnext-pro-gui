@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lion.AbpPro.Extension.Customs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,20 +14,6 @@ namespace Lion.CodeGenerator.BusinessLines.Aggregates;
 /// </summary>
 public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
 {
-    private BusinessLine()
-    {
-        BusinessProjects = new List<BusinessProject>();
-    }
-
-    public BusinessLine(Guid id, string name, bool enable, string description, Guid? tenantId) : base(id)
-    {
-        TenantId = tenantId;
-        Name = name;
-        Enable = enable;
-        Description = description;
-        BusinessProjects = new List<BusinessProject>();
-    }
-
     /// <summary>
     /// 租户
     /// </summary>
@@ -51,6 +38,47 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     public string Description { get; private set; }
 
     public List<BusinessProject> BusinessProjects { get; private set; }
+
+    private BusinessLine()
+    {
+        BusinessProjects = new List<BusinessProject>();
+    }
+
+    public BusinessLine(Guid id, string name, bool enable, string description, Guid? tenantId) : base(id)
+    {
+        SetProperties(tenantId, name, enable, description);
+        BusinessProjects = new List<BusinessProject>();
+    }
+
+    private void SetProperties(Guid? tenantId, string name, bool enable, string description)
+    {
+        SetTenantId(tenantId);
+        SetName(name);
+        SetEnable(enable);
+        SetDescription(description);
+    }
+
+    public void SetTenantId(Guid? tenantId)
+    {
+        TenantId = tenantId;
+    }
+
+    public void SetName(string name)
+    {
+        Check.NotNullOrWhiteSpace(name, nameof(name), BusinessLineMaxLengths.Name);
+        Name = name;
+    }
+
+    public void SetEnable(bool enable)
+    {
+        Enable = enable;
+    }
+
+    public void SetDescription(string description)
+    {
+        Check.NotNullOrWhiteSpace(description, nameof(description), BusinessLineMaxLengths.Description);
+        Description = description;
+    }
 
     public void AddBusinessProject(Guid businessProjectId, Guid businessLineId, string name, string nameSpace, bool enable, string description)
     {
