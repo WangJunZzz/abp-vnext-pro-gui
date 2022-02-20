@@ -24,8 +24,8 @@ public class EnumProperty : Entity<Guid>
     public Guid EnumModelId { get; private set; }
 
     public string Code { get; private set; }
-
-    public string Description { get; private set; }
-
+    
     public int Value { get; private set; }
+    
+    public string Description { get; private set; }
 }
