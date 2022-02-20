@@ -54,5 +54,5 @@ public interface IBusinessLineAppService : IApplicationService
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
-    Task DeleteBusinessProjectAsync(IdInput input);
+    Task DeleteBusinessProjectAsync(DeleteBusinessProjectInput input);
 }

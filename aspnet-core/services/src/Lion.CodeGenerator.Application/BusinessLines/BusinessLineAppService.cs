@@ -63,8 +63,8 @@ public class BusinessLineAppService : CodeGeneratorAppService, IBusinessLineAppS
         return ObjectMapper.Map<BusinessLineDto, BusinessLineOutput>(businessProjectDto);
     }
 
-    public async Task DeleteBusinessProjectAsync(IdInput input)
+    public async Task DeleteBusinessProjectAsync(DeleteBusinessProjectInput input)
     {
-        await _businessLineManager.DeleteBusinessProjectAsync(input.Id);
+        await _businessLineManager.DeleteBusinessProjectAsync(input.BusinessLineId, input.BusinessProjectId);
     }
 }

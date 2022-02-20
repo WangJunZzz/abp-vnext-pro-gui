@@ -47,14 +47,14 @@ public class BusinessLineController : CodeGeneratorController, IBusinessLineAppS
         return _businessLineAppService.DeleteAsync(input);
     }
 
-    [HttpPost("create-business-line-project")]
+    [HttpPost("create-business-project")]
     [SwaggerOperation(summary: "创建业务线项目", Tags = new[] { "BusinessLines" })]
     public Task<BusinessLineOutput> CreateBusinessProjectAsync(CreateBusinessProjectInput input)
     {
         return _businessLineAppService.CreateBusinessProjectAsync(input);
     }
 
-    [HttpPost("create-business-project")]
+    [HttpPost("update-business-project")]
     [SwaggerOperation(summary: "编辑业务线项目", Tags = new[] { "BusinessLines" })]
     public Task<BusinessLineOutput> UpdateBusinessProjectAsync(UpdateBusinessProjectInput input)
     {
@@ -63,7 +63,7 @@ public class BusinessLineController : CodeGeneratorController, IBusinessLineAppS
 
     [HttpPost("delete-business-project")]
     [SwaggerOperation(summary: "删除业务线项目", Tags = new[] { "BusinessLines" })]
-    public Task DeleteBusinessProjectAsync(IdInput input)
+    public Task DeleteBusinessProjectAsync(DeleteBusinessProjectInput input)
     {
         return _businessLineAppService.DeleteBusinessProjectAsync(input);
     }

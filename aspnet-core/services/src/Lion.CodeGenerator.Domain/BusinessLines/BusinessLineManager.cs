@@ -12,10 +12,15 @@ namespace Lion.CodeGenerator.BusinessLines;
 public class BusinessLineManager : CodeGeneratorDomainService
 {
     private readonly IBusinessLineRepository _businessLineRepository;
+    private readonly IBusinessLineFreeSqlRepository _businessLineFreeSqlRepository;
 
-    public BusinessLineManager(IBusinessLineRepository businessLineRepository)
+    public BusinessLineManager(
+        IBusinessLineRepository businessLineRepository,
+        IBusinessLineFreeSqlRepository businessLineFreeSqlRepository
+        )
     {
         _businessLineRepository = businessLineRepository;
+        this._businessLineFreeSqlRepository = businessLineFreeSqlRepository;
     }
 
     /// <summary>
@@ -42,9 +47,6 @@ public class BusinessLineManager : CodeGeneratorDomainService
     /// <exception cref="UserFriendlyException"></exception>
     public async Task<BusinessLineDto> UpdateBusinessLineAsync(Guid id, string name, string description, bool enable)
     {
-        //var entity = await _businessLineRepository.FindAsync(b => b.Name != name && b.Id == id);
-        //if (entity != null) throw new UserFriendlyException("业务线已存在");
-
         var buisinessLine = await _businessLineRepository.FindAsync(b => b.Id == id);
         if (buisinessLine == null)
         {
@@ -53,26 +55,9 @@ public class BusinessLineManager : CodeGeneratorDomainService
 
         await ChangeNameAsync(buisinessLine, name);
 
-        buisinessLine.SetTenantId(CurrentTenant.Id);
-        buisinessLine.SetName(name);
-        buisinessLine.SetDescription(description);
-        buisinessLine.SetEnable(enable);
+        buisinessLine.UpdateBuisinessLine(CurrentTenant.Id, name, enable, description);
 
         return ObjectMapper.Map<BusinessLine, BusinessLineDto>(await _businessLineRepository.UpdateAsync(buisinessLine));
-    }
-
-    private async Task ChangeNameAsync(BusinessLine businessLine, string newName)
-    {
-        Check.NotNull(businessLine, nameof(businessLine));
-        Check.NotNullOrWhiteSpace(newName, nameof(newName));
-
-        var existingBuisnessLine = await _businessLineRepository.FindByNameAsync(newName);
-        if (existingBuisnessLine != null && existingBuisnessLine.Id != businessLine.Id)
-        {
-            throw new UserFriendlyException("业务线已存在");
-        }
-
-        businessLine.ChangeName(newName);
     }
 
     /// <summary>
@@ -108,19 +93,20 @@ public class BusinessLineManager : CodeGeneratorDomainService
               CancellationToken cancellationToken = default)
     {
 
-        var result = new CustomePagedResultDto<BusinessLineDto>();
+        //var result = new CustomePagedResultDto<BusinessLineDto>();
 
-        var totalCount = await _businessLineRepository.GetPagedCountAsync(filter, cancellationToken);
-        result.TotalCount = totalCount;
-        if (totalCount <= 0)
-        {
-            return result;
-        }
+        //var totalCount = await _businessLineRepository.GetPagedCountAsync(filter, cancellationToken);
+        //result.TotalCount = totalCount;
+        //if (totalCount <= 0)
+        //{
+        //    return result;
+        //}
 
-        var businessLines = await _businessLineRepository.GetPagedListAsync(filter, pageSize, skipCount, cancellationToken: cancellationToken);
-        result.Items = ObjectMapper.Map<List<BusinessLine>, List<BusinessLineDto>>(businessLines);
+        //var businessLines = await _businessLineRepository.GetPagedListAsync(filter, pageSize, skipCount, cancellationToken: cancellationToken);
+        //result.Items = ObjectMapper.Map<List<BusinessLine>, List<BusinessLineDto>>(businessLines);
+        // return result;
 
-        return result;
+        return await _businessLineFreeSqlRepository.PagingAsync(filter, pageSize, skipCount);
     }
 
     /// <summary>
@@ -169,19 +155,34 @@ public class BusinessLineManager : CodeGeneratorDomainService
     /// <summary>
     /// 删除业务线项目
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="buinessLineId"></param>
+    /// <param name="buinessProjectId"></param>
     /// <returns></returns>
     /// <exception cref="UserFriendlyException"></exception>
-    public async Task DeleteBusinessProjectAsync(Guid id)
+    public async Task DeleteBusinessProjectAsync(Guid buinessLineId, Guid buinessProjectId)
     {
-        var businessLine = await _businessLineRepository.FindAsync(b => b.Id == id);
+        var businessLine = await _businessLineRepository.FindAsync(b => b.Id == buinessLineId);
         if (businessLine == null)
         {
-            throw new UserFriendlyException($"业务线id:{id}不存在");
+            throw new UserFriendlyException($"业务线id:{buinessLineId}不存在");
         }
 
-        businessLine = businessLine.RemoveBusinessProject(id);
+        businessLine = businessLine.RemoveBusinessProject(buinessLineId, buinessProjectId);
 
-        await _businessLineRepository.DeleteAsync(businessLine);
+        await _businessLineRepository.UpdateAsync(businessLine);
+    }
+
+    private async Task ChangeNameAsync(BusinessLine businessLine, string newName)
+    {
+        Check.NotNull(businessLine, nameof(businessLine));
+        Check.NotNullOrWhiteSpace(newName, nameof(newName));
+
+        var existingBuisnessLine = await _businessLineRepository.FindByNameAsync(newName);
+        if (existingBuisnessLine != null && existingBuisnessLine.Id != businessLine.Id)
+        {
+            throw new UserFriendlyException("业务线已存在");
+        }
+
+        businessLine.ChangeName(newName);
     }
 }

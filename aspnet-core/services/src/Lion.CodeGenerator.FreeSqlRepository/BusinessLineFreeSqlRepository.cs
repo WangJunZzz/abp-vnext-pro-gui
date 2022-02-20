@@ -24,13 +24,17 @@ public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLi
 
     private string BuildSql(string filter)
     {
-        var sql = "select p.id, " +
-                  " p.name, " +
-                  " p.disabled, " +
-                  " p.description, " +
-                  " p.creationtime " +
-                  " from Gen_BusinessLine p " +
-                  " where p.IsDeleted=0 ";
+        //var sql = "select p.id, " +
+        //          " p.tenantId, " +
+        //          " p.name, " +
+        //          " p.enable, " +
+        //          " p.description, " +
+        //          " p.creationtime " +
+        //          " from Gen_BusinessLine p " +
+        //          " where p.IsDeleted=0 ";
+
+        var sql = @$"select p.id,  p.tenantId,  p.name,  p.enable,  p.description,  p.creationtime 
+                     from Gen_BusinessLine p left join gen_businessproject b on p.id = b.BusinessLineId  where p.IsDeleted = 0  ";
         if (filter.IsNotNullOrWhiteSpace())
         {
             filter = filter.ToSqlContains();

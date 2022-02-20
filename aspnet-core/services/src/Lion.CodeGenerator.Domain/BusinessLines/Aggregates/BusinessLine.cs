@@ -57,23 +57,23 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
         SetDescription(description);
     }
 
-    public void SetTenantId(Guid? tenantId)
+    private void SetTenantId(Guid? tenantId)
     {
         TenantId = tenantId;
     }
 
-    public void SetName(string name)
+    private void SetName(string name)
     {
         Check.NotNullOrWhiteSpace(name, nameof(name), BusinessLineMaxLengths.Name);
         Name = name;
     }
 
-    public void SetEnable(bool enable)
+    private void SetEnable(bool enable)
     {
         Enable = enable;
     }
 
-    public void SetDescription(string description)
+    private void SetDescription(string description)
     {
         Check.NotNullOrWhiteSpace(description, nameof(description), BusinessLineMaxLengths.Description);
         Description = description;
@@ -86,6 +86,26 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     }
 
     /// <summary>
+    /// 更新业务线
+    /// </summary>
+    /// <param name="tenantId"></param>
+    /// <param name="name"></param>
+    /// <param name="enable"></param>
+    /// <param name="description"></param>
+    public void UpdateBuisinessLine(
+        Guid? tenantId,
+        string name,
+        bool enable,
+        string description
+        )
+    {
+        SetTenantId(tenantId);
+        SetName(name);
+        SetEnable(enable);
+        SetDescription(description);
+    }
+
+    /// <summary>
     /// 新增业务线项目
     /// </summary>
     /// <param name="id"></param>
@@ -95,7 +115,13 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <param name="enable"></param>
     /// <param name="description"></param>
     /// <exception cref="UserFriendlyException"></exception>
-    public void AddBusinessProject(Guid id, Guid businessLineId, string name, string nameSpace, bool enable, string description)
+    public void AddBusinessProject(
+        Guid id,
+        Guid businessLineId,
+        string name,
+        string nameSpace,
+        bool enable,
+        string description)
     {
         Check.NotNullOrWhiteSpace(name, nameof(name));
         Check.NotNullOrWhiteSpace(nameSpace, nameof(nameSpace));
@@ -116,10 +142,21 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <param name="nameSpace"></param>
     /// <param name="enable"></param>
     /// <param name="description"></param>
-    public BusinessLine UpdateBusinessProject(Guid id, string name, string nameSpace, bool enable, string description)
+    public BusinessLine UpdateBusinessProject(
+        Guid id,
+        string name,
+        string nameSpace,
+        bool enable,
+        string description)
     {
         var businessProject = BusinessProjects.Find(e => e.Id == id);
-        Check.NotNull(businessProject, nameof(businessProject));
+
+        if (businessProject == null)
+        {
+            throw new UserFriendlyException($"业务线项目id：{id}不存在");
+        }
+
+        //Check.NotNull(businessProject, nameof(businessProject));
 
         businessProject.SetName(name);
         businessProject.SetEnable(enable);
@@ -132,10 +169,19 @@ public class BusinessLine : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <summary>
     /// 删除业务线项目
     /// </summary>
+    /// <param name="businessLineId"></param>
     /// <param name="businessProjectId"></param>
-    public BusinessLine RemoveBusinessProject(Guid businessProjectId)
+    /// <returns></returns>
+    /// <exception cref="UserFriendlyException"></exception>
+    public BusinessLine RemoveBusinessProject(Guid businessLineId, Guid businessProjectId)
     {
-        BusinessProjects.RemoveAll(b => b.BusinessLineId == businessProjectId);
+        var businessProject = BusinessProjects.Find(b => b.BusinessLineId == businessLineId && b.Id == businessProjectId);
+        if (businessProject == null)
+        {
+            throw new UserFriendlyException($"业务线项目id：{businessProjectId}不存在");
+        }
+
+        BusinessProjects.Remove(businessProject);
 
         return this;
     }
