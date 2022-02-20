@@ -14,6 +14,7 @@ namespace Lion.CodeGenerator.BusinessLines.Mappers
         public BusinessLineApplicationAutoMapperProfile()
         {
             CreateMap<BusinessLine, BusinessLineDto>();
+            CreateMap<BusinessProject, BusinessProjectDto>();
         }
     }
 }

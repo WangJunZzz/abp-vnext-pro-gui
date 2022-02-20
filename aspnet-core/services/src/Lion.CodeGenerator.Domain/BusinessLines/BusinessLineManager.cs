@@ -89,6 +89,7 @@ public class BusinessLineManager : CodeGeneratorDomainService
             throw new UserFriendlyException($"业务线id:{id}不存在");
         }
 
+        buisinessLine.BusinessProjects.Clear();
         await _businessLineRepository.DeleteAsync(buisinessLine);
     }
 
@@ -134,7 +135,7 @@ public class BusinessLineManager : CodeGeneratorDomainService
 
         businessLine.AddBusinessProject(GuidGenerator.Create(), businessLineId, name, nameSpace, enable, description);
 
-        businessLine = await _businessLineRepository.InsertAsync(businessLine);
+        businessLine = await _businessLineRepository.UpdateAsync(businessLine);
 
         return ObjectMapper.Map<BusinessLine, BusinessLineDto>(businessLine);
     }
