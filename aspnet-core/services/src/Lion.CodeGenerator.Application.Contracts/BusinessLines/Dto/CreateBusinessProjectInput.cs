@@ -8,6 +8,8 @@ public class CreateBusinessProjectInput
     /// <summary>
     /// 业务线id
     /// </summary>
+    /// 
+    [Required]
     public Guid BusinessLineId { get; set; }
 
     [Required(ErrorMessage = "业务线项目必填")]
@@ -26,4 +28,6 @@ public class CreateBusinessProjectInput
     /// </summary>
     [MaxLength(512)]
     public string Description { get; set; }
+
+    public bool Enable { get; set; }
 }
