@@ -3,7 +3,7 @@ using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
-namespace Lion.CodeGenerator.AggregateModels;
+namespace Lion.CodeGenerator.AggregateModels.Aggregates;
 
 /// <summary>
 /// 属性模型

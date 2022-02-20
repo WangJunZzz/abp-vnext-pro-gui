@@ -2,7 +2,7 @@
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
 
-namespace Lion.CodeGenerator.AggregateModels;
+namespace Lion.CodeGenerator.EnumModels;
 
 public class EnumProperty : Entity<Guid>
 {

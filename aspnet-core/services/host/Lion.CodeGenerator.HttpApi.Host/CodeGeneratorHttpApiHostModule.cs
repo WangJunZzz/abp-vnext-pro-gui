@@ -19,9 +19,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Lion.CodeGenerator.Extensions.Filters;
 using Lion.CodeGenerator.Extensions.Hangfire;
-using Lion.CodeGenerator.Jobs;
 using Volo.Abp;
 using Volo.Abp.Account.Web;
 using Volo.Abp.AspNetCore.Authentication.JwtBearer;
@@ -39,6 +37,7 @@ using Lion.AbpPro.Shared.Hosting.Microservices.Microsoft.AspNetCore.Builder;
 using Lion.AbpPro.Shared.Hosting.Microservices.Swaggers;
 using Lion.AbpPro.CAP;
 using Lion.AbpPro.ConfigurationOptions;
+using Lion.CodeGenerator.Extensions;
 
 namespace Lion.CodeGenerator
 {

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
-using Volo.Abp.MultiTenancy;
 
-namespace Lion.CodeGenerator.AggregateModels;
+namespace Lion.CodeGenerator.EnumModels;
 
 public class EnumModel : FullAuditedAggregateRoot<Guid>
 {

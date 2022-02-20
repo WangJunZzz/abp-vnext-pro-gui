@@ -1,4 +1,4 @@
-﻿namespace Lion.CodeGenerator.Tool.Application
+﻿namespace Lion.CodeGenerator.Tool
 {
     public class CodeGeneratorToolApplicationModule
     {

@@ -3,7 +3,7 @@ using Hangfire.Common;
 using Hangfire.States;
 using Hangfire.Storage;
 
-namespace Lion.CodeGenerator.Extensions.Filters;
+namespace Lion.CodeGenerator.Extensions.Hangfire;
 
 public class AutoDeleteAfterSuccessAttributer : JobFilterAttribute, IApplyStateFilter
 {

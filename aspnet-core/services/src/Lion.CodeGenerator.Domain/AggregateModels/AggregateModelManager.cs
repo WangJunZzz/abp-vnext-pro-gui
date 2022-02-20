@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
 
@@ -130,7 +131,7 @@ public class AggregateModelManager : DomainService
     /// 更新聚合根属性
     /// </summary>
     /// <exception cref="UserFriendlyException"></exception>
-    public async Task UpdatgeAggregatePropertyAsync(
+    public async Task UpdateAggregatePropertyAsync(
         Guid aggregateId,
         Guid aggregatePropertyId,
         string code,

@@ -9,6 +9,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Lion.CodeGenerator.Domain\Lion.CodeGenerator.Domain.csproj" />
 		<ProjectReference Include="..\Lion.CodeGenerator.Application.Contracts\Lion.CodeGenerator.Application.Contracts.csproj" />
+		<ProjectReference Include="..\Lion.CodeGenerator.FreeSqlRepository\Lion.CodeGenerator.FreeSqlRepository.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

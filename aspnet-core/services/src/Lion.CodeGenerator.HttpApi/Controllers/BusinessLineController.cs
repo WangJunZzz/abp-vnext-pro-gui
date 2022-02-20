@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.CodeGenerator.BusinessLines;
 using Lion.CodeGenerator.BusinessLines.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,13 @@ public class BusinessLineController : CodeGeneratorController, IBusinessLineAppS
     public BusinessLineController(IBusinessLineAppService businessLineAppService)
     {
         _businessLineAppService = businessLineAppService;
+    }
+
+    [HttpPost("Page")]
+    [SwaggerOperation(summary: "分页获取业务线", Tags = new[] { "BusinessLines" })]
+    public Task<CustomePagedResultDto<PagingBusinessLineOutput>> PagingAsync(PagingBusinessLineInput input)
+    {
+        return _businessLineAppService.PagingAsync(input);
     }
 
     [HttpPost("CreateBusinessLine")]

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Volo.Abp.Domain.Repositories;
 
 namespace Lion.CodeGenerator.AggregateModels;

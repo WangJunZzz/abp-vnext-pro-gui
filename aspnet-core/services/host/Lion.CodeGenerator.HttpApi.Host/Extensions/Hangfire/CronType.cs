@@ -1,7 +1,7 @@
 using System;
 using Hangfire;
 
-namespace Lion.CodeGenerator.Jobs
+namespace Lion.CodeGenerator.Extensions.Hangfire
 {
     /// <summary>
     /// Cron类型
