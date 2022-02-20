@@ -8,6 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DataTypes\**" />
+    <Compile Remove="EntityModels\**" />
+    <EmbeddedResource Remove="DataTypes\**" />
+    <EmbeddedResource Remove="EntityModels\**" />
+    <None Remove="DataTypes\**" />
+    <None Remove="EntityModels\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Lion.CodeGenerator.Domain.Shared\Lion.CodeGenerator.Domain.Shared.csproj" />
   </ItemGroup>
 

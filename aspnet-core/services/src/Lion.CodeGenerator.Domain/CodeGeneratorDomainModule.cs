@@ -5,7 +5,7 @@ using Lion.CodeGenerator.MultiTenancy;
 using Volo.Abp.Emailing;
 using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
-
+using Volo.Abp.AutoMapper;
 
 namespace Lion.CodeGenerator
 {
@@ -20,6 +20,12 @@ namespace Lion.CodeGenerator
             Configure<AbpMultiTenancyOptions>(options =>
             {
                 options.IsEnabled = MultiTenancyConsts.IsEnabled;
+            });
+
+            context.Services.AddAutoMapperObjectMapper<CodeGeneratorDomainModule>();
+            Configure<AbpAutoMapperOptions>(options =>
+            {
+                options.AddMaps<CodeGeneratorDomainModule>();
             });
 
 #if DEBUG

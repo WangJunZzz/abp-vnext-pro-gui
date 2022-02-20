@@ -24,15 +24,15 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
             {
                 b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(BusinessProject), CodeGeneratorDbProperties.DbSchema);
                 b.ConfigureByConvention();
-                b.HasKey(x => new { x.BusinessLineId, x.BusinessProjectId });
+                //b.HasKey(x => new { x.BusinessLineId, x.BusinessProjectId });
             });
 
-            builder.Entity<BusinessProject>(b =>
-            {
-                b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(BusinessProject), CodeGeneratorDbProperties.DbSchema);
-                b.ConfigureByConvention();
-                b.HasKey(x => new { x.BusinessLineId, x.BusinessProjectId });
-            });
+            //builder.Entity<BusinessProject>(b =>
+            //{
+            //    b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(BusinessProject), CodeGeneratorDbProperties.DbSchema);
+            //    b.ConfigureByConvention();
+            //    //b.HasKey(x => new { x.BusinessLineId, x.BusinessProjectId });
+            //});
 
             builder.Entity<AggregateModel>(b =>
             {

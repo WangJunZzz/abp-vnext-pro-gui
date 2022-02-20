@@ -1,28 +1,28 @@
-﻿using System;
-using System.Threading.Tasks;
-using Lion.AbpPro.Extension.Customs.Dtos;
+﻿using Lion.AbpPro.Extension.Customs.Dtos;
 using Lion.AbpPro.Extension.System;
 using Lion.CodeGenerator.BusinessLines;
-using Lion.CodeGenerator.BusinessLines.Dto;
+using Lion.CodeGenerator.BusinessLines.Dtos;
+using System;
+using System.Threading.Tasks;
 
 namespace Lion.CodeGenerator.FreeSqlRepository;
 
 public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLineFreeSqlRepository
 {
-    public async Task<CustomePagedResultDto<PagingBusinessLineOutput>> PagingAsync(
-        PagingBusinessLineInput input)
+    public async Task<CustomePagedResultDto<BusinessLineDto>> PagingAsync(
+        string filter,int pageSize,int pageIndex)
     {
-        var sql = BuildSql(input);
-        var result = await FreeSql.Select<PagingBusinessLineOutput>()
-            .WithSql(sql, input)
+        var sql = BuildSql(filter);
+        var result = await FreeSql.Select<BusinessLineDto>()
+            .WithSql(sql, filter)
             .Count(out var total)
-            .Page(input.PageIndex, input.PageSize)
+            .Page(pageIndex, pageSize)
             .ToListAsync();
 
-        return new CustomePagedResultDto<PagingBusinessLineOutput>(total, result);
+        return new CustomePagedResultDto<BusinessLineDto>(total, result);
     }
 
-    private string BuildSql(PagingBusinessLineInput input)
+    private string BuildSql(string filter)
     {
         var sql = "select p.id, " +
                   " p.name, " +
@@ -31,9 +31,9 @@ public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLi
                   " p.creationtime " +
                   " from Gen_BusinessLine p " +
                   " where p.IsDeleted=0 ";
-        if (input.Filter.IsNotNullOrWhiteSpace())
+        if (filter.IsNotNullOrWhiteSpace())
         {
-            input.Filter = input.Filter.ToSqlContains();
+            filter = filter.ToSqlContains();
             sql += " and  p.name like ?Filter or p.description like ?Filter";
         }
 
