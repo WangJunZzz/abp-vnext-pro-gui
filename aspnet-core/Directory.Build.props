@@ -9,7 +9,6 @@
 		<MicrosoftExtensionsDependencyModelVersion>6.0.0</MicrosoftExtensionsDependencyModelVersion>
 		<SwashbuckleVersion>6.2.3</SwashbuckleVersion>
 		<MicrosoftNETTestSdkVersion>17.0.0</MicrosoftNETTestSdkVersion>
-		<FreeSqlVersion>2.5.200</FreeSqlVersion>
 		<MiniProfilerVersion>4.2.22</MiniProfilerVersion>
 		<MicrosoftAspNetCoreHttpAbstractionsVersion>2.2.0</MicrosoftAspNetCoreHttpAbstractionsVersion>
 		<SerilogVersion>2.10.0</SerilogVersion>
