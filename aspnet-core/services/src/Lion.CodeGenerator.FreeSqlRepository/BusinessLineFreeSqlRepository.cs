@@ -3,6 +3,7 @@ using Lion.AbpPro.Extension.System;
 using Lion.CodeGenerator.BusinessLines;
 using Lion.CodeGenerator.BusinessLines.Dtos;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Lion.CodeGenerator.FreeSqlRepository;
@@ -10,14 +11,14 @@ namespace Lion.CodeGenerator.FreeSqlRepository;
 public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLineFreeSqlRepository
 {
     public async Task<CustomePagedResultDto<BusinessLineDto>> PagingAsync(
-        string filter,int pageSize,int pageIndex)
+        string filter, int pageSize, int pageIndex, CancellationToken cancellationToken = default)
     {
         var sql = BuildSql(filter);
         var result = await FreeSql.Select<BusinessLineDto>()
             .WithSql(sql, filter)
             .Count(out var total)
             .Page(pageIndex, pageSize)
-            .ToListAsync();
+            .ToListAsync(cancellationToken: cancellationToken);
 
         return new CustomePagedResultDto<BusinessLineDto>(total, result);
     }

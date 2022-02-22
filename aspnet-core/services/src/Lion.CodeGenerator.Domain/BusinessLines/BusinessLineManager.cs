@@ -106,7 +106,7 @@ public class BusinessLineManager : CodeGeneratorDomainService
         //result.Items = ObjectMapper.Map<List<BusinessLine>, List<BusinessLineDto>>(businessLines);
         // return result;
 
-        return await _businessLineFreeSqlRepository.PagingAsync(filter, pageSize, skipCount);
+        return await _businessLineFreeSqlRepository.PagingAsync(filter, pageSize, skipCount, cancellationToken);
     }
 
     /// <summary>
