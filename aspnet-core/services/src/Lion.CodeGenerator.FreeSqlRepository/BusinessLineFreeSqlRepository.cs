@@ -11,11 +11,14 @@ namespace Lion.CodeGenerator.FreeSqlRepository;
 public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLineFreeSqlRepository
 {
     public async Task<CustomePagedResultDto<BusinessLineDto>> PagingAsync(
-        string filter, int pageSize, int pageIndex, CancellationToken cancellationToken = default)
+        string filter, 
+        int pageSize, 
+        int pageIndex, 
+        CancellationToken cancellationToken = default)
     {
-        var sql = BuildSql(filter);
+        var sql = BuildSql(ref filter);
         var result = await FreeSql.Select<BusinessLineDto>()
-            .WithSql(sql, filter)
+            .WithSql(sql, new { filter })
             .Count(out var total)
             .Page(pageIndex, pageSize)
             .ToListAsync(cancellationToken: cancellationToken);
@@ -23,7 +26,7 @@ public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLi
         return new CustomePagedResultDto<BusinessLineDto>(total, result);
     }
 
-    private string BuildSql(string filter)
+    private string BuildSql(ref string filter)
     {
         //var sql = "select p.id, " +
         //          " p.tenantId, " +
@@ -38,8 +41,8 @@ public class BusinessLineFreeSqlRepository : FreeSqlBasicRepository, IBusinessLi
                      from Gen_BusinessLine p left join gen_businessproject b on p.id = b.BusinessLineId  where p.IsDeleted = 0  ";
         if (filter.IsNotNullOrWhiteSpace())
         {
-            filter = filter.ToSqlContains();
-            sql += " and  p.name like ?Filter or p.description like ?Filter";
+            filter.ToSqlContains();
+            sql += " and  p.name like ?filter or p.description like ?filter";
         }
 
         sql += " order by CreationTime desc ";
