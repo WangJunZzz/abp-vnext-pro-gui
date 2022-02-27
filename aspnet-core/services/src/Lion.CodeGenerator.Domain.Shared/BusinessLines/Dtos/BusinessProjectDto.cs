@@ -9,21 +9,21 @@ namespace Lion.CodeGenerator.BusinessLines.Dtos
         /// <summary>
         /// 业务线名称
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get;  set; }
 
         /// <summary>
         /// 命名空间
         /// </summary>
-        public string NameSpace { get; private set; }
+        public string NameSpace { get;  set; }
 
         /// <summary>
         /// 启用禁用
         /// </summary>
-        public bool Enable { get; private set; }
+        public bool Enable { get;  set; }
 
         /// <summary>
         /// 描述
         /// </summary>
-        public string Description { get; private set; }
+        public string Description { get;  set; }
     }
 }

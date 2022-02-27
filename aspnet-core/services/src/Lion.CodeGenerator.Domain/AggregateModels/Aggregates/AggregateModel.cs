@@ -39,7 +39,7 @@ public class AggregateModel : FullAuditedAggregateRoot<Guid>, IMultiTenant
     /// <summary>
     /// 项目Id
     /// </summary>
-    public Guid BusinessProjectId { get; set; }
+    public Guid BusinessProjectId { get; private set; }
     
     /// <summary>
     /// 聚合根类Code

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Volo.Abp.Domain.Repositories;
 
 namespace Lion.CodeGenerator.EnumModels;

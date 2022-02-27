@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lion.CodeGenerator.EntityFrameworkCore.BusinessLines;
 using Lion.CodeGenerator.EnumModels;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;

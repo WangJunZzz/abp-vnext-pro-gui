@@ -1,10 +1,10 @@
 ﻿using System;
 using Volo.Abp;
-using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Entities.Auditing;
 
-namespace Lion.CodeGenerator.EnumModels;
+namespace Lion.CodeGenerator.EnumModels.Aggregates;
 
-public class EnumProperty : Entity<Guid>
+public class EnumProperty : CreationAuditedEntity<Guid>
 {
     private EnumProperty()
     {

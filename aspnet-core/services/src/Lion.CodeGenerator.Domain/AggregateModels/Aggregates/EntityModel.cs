@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Lion.CodeGenerator.AggregateModels.Aggregates;
 
 /// <summary>
 /// 实体模型
 /// </summary>
-public class EntityModel : Entity<Guid>
+public class EntityModel : CreationAuditedEntity<Guid>
 {
     private EntityModel()
     {

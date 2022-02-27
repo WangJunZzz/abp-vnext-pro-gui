@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Volo.Abp;
 using Volo.Abp.Domain.Services;
 
@@ -33,7 +34,7 @@ public class EnumModelManager : DomainService
             throw new UserFriendlyException("当前聚合根下该枚举已存在");
         }
 
-        entity = new EnumModel(GuidGenerator.Create(), aggregateModelId, code, description);
+        entity = new EnumModel(GuidGenerator.Create(), aggregateModelId, code, description, CurrentTenant.Id);
 
         return await _enumModelRepository.InsertAsync(entity);
     }

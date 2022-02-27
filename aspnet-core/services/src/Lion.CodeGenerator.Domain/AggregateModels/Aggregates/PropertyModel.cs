@@ -2,13 +2,14 @@
 using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities;
+using Volo.Abp.Domain.Entities.Auditing;
 
 namespace Lion.CodeGenerator.AggregateModels.Aggregates;
 
 /// <summary>
 /// 属性模型
 /// </summary>
-public class PropertyModel : Entity<Guid>
+public class PropertyModel : CreationAuditedEntity<Guid>
 {
     private PropertyModel()
     {

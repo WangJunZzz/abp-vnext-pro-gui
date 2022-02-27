@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Lion.CodeGenerator.AggregateModels;
 using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -17,5 +18,7 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
     {
         DbSet<BusinessLine> BusinessLines { get; }
         public DbSet<AggregateModel> AggregateModels { get; }
+        public DbSet<EnumModel> EnumModels { get; }
+        
     }
 }

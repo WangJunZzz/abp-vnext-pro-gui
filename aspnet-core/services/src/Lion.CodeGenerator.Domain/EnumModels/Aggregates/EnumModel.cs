@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Volo.Abp;
 using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.MultiTenancy;
 
-namespace Lion.CodeGenerator.EnumModels;
+namespace Lion.CodeGenerator.EnumModels.Aggregates;
 
-public class EnumModel : FullAuditedAggregateRoot<Guid>
+public class EnumModel : FullAuditedAggregateRoot<Guid>,IMultiTenant
 {
     private EnumModel(string code, string description)
     {
@@ -15,14 +16,18 @@ public class EnumModel : FullAuditedAggregateRoot<Guid>
         EnumProperties = new List<EnumProperty>();
     }
 
-    public EnumModel(Guid id, Guid aggregateModelId, string code, string description) : base(id)
+    public EnumModel(Guid id, Guid aggregateModelId, string code, string description, Guid? tenantId) : base(id)
     {
+        TenantId = tenantId;
         AggregateModelId = aggregateModelId;
         Code = code;
         Description = description;
         EnumProperties = new List<EnumProperty>();
     }
 
+    
+    public Guid? TenantId { get; private set; }
+    
     /// <summary>
     /// 聚合根Id
     /// </summary>
@@ -54,4 +59,5 @@ public class EnumModel : FullAuditedAggregateRoot<Guid>
 
         EnumProperties.Add(new EnumProperty(Id, code, description, value));
     }
+
 }

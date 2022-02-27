@@ -23,7 +23,7 @@ public class BusinessLineController : CodeGeneratorController, IBusinessLineAppS
     [SwaggerOperation(summary: "分页获取业务线信息", Tags = new[] { "BusinessLines" })]
     public Task<PagedResultDto<BusinessLineOutput>> GetPagedListAsync(PagingBusinessLineListInput input, CancellationToken cancellationToken = default)
     {
-        return _businessLineAppService.GetPagedListAsync(input);
+        return _businessLineAppService.GetPagedListAsync(input,cancellationToken);
     }
 
     [HttpPost("create")]

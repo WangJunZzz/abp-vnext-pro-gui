@@ -29,8 +29,7 @@ public class AggregateModelManager : DomainService
         Guid businessLineId,
         Guid businessProjectId,
         string code,
-        string description,
-        Guid? tenantId)
+        string description)
     {
         var aggregate = await FindAsync(code, businessLineId, businessProjectId);
         if (aggregate != null)
@@ -247,7 +246,7 @@ public class AggregateModelManager : DomainService
     }
 
     public async Task<AggregateModel> CreateAggregateEntityPropertyAsync(
-        Guid aggregateModelId,
+        Guid aggregateId,
         Guid aggregateModelEntityId,
         string code,
         string description,
@@ -258,7 +257,7 @@ public class AggregateModelManager : DomainService
         int decimalPrecision,
         int decimalScale)
     {
-        var aggregate = await _aggregateModelRepository.FindAsync(aggregateModelId);
+        var aggregate = await _aggregateModelRepository.FindAsync(aggregateId);
         if (aggregate == null)
         {
             throw new UserFriendlyException($"{code}|{description}聚合根不存在");

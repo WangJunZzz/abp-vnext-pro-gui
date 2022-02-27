@@ -411,6 +411,14 @@ namespace Lion.CodeGenerator.Migrations
                     b.Property<Guid>("AggregateModelTenantId")
                         .HasColumnType("char(36)");
 
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
                     b.Property<string>("Description")
                         .HasColumnType("longtext");
 
@@ -447,6 +455,14 @@ namespace Lion.CodeGenerator.Migrations
 
                     b.Property<Guid>("AggregateModelTenantId")
                         .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
 
                     b.Property<int>("DecimalPrecision")
                         .HasColumnType("int");
@@ -593,6 +609,108 @@ namespace Lion.CodeGenerator.Migrations
                     b.HasIndex("BusinessLineId");
 
                     b.ToTable("Gen_BusinessProject", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.EnumModels.Aggregates.EnumModel", b =>
+                {
+                    b.Property<Guid>("AggregateModelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)")
+                        .HasColumnName("ConcurrencyStamp");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("DeleterId");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("DeletionTime");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnType("longtext")
+                        .HasColumnName("ExtraProperties");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("tinyint(1)")
+                        .HasDefaultValue(false)
+                        .HasColumnName("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("LastModificationTime");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("LastModifierId");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("TenantId");
+
+                    b.HasKey("AggregateModelId", "Code");
+
+                    b.ToTable("Gen_EnumModel", (string)null);
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.EnumModels.Aggregates.EnumProperty", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("CreationTime");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)")
+                        .HasColumnName("CreatorId");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("EnumModelAggregateModelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("EnumModelCode")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)");
+
+                    b.Property<Guid>("EnumModelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EnumModelAggregateModelId", "EnumModelCode");
+
+                    b.ToTable("Gen_EnumProperty", (string)null);
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -2558,6 +2676,15 @@ namespace Lion.CodeGenerator.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Lion.CodeGenerator.EnumModels.Aggregates.EnumProperty", b =>
+                {
+                    b.HasOne("Lion.CodeGenerator.EnumModels.Aggregates.EnumModel", null)
+                        .WithMany("EnumProperties")
+                        .HasForeignKey("EnumModelAggregateModelId", "EnumModelCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>
                 {
                     b.HasOne("Volo.Abp.AuditLogging.AuditLog", null)
@@ -2860,6 +2987,11 @@ namespace Lion.CodeGenerator.Migrations
             modelBuilder.Entity("Lion.CodeGenerator.BusinessLines.Aggregates.BusinessLine", b =>
                 {
                     b.Navigation("BusinessProjects");
+                });
+
+            modelBuilder.Entity("Lion.CodeGenerator.EnumModels.Aggregates.EnumModel", b =>
+                {
+                    b.Navigation("EnumProperties");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

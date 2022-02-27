@@ -5,6 +5,7 @@ using Lion.AbpPro.NotificationManagement.EntityFrameworkCore;
 using Lion.CodeGenerator.AggregateModels;
 using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -63,6 +64,8 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
         
         public DbSet<BusinessLine> BusinessLines { get; }
         public DbSet<AggregateModel> AggregateModels { get; }
+
+        public DbSet<EnumModel> EnumModels { get; }
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside CodeGeneratorDbContextModelCreatingExtensions.ConfigureCodeGenerator
          */

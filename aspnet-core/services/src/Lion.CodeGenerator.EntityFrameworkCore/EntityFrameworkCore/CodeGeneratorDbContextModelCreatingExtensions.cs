@@ -1,6 +1,7 @@
 using Lion.CodeGenerator.AggregateModels;
 using Lion.CodeGenerator.AggregateModels.Aggregates;
 using Lion.CodeGenerator.BusinessLines.Aggregates;
+using Lion.CodeGenerator.EnumModels.Aggregates;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -55,6 +56,18 @@ namespace Lion.CodeGenerator.EntityFrameworkCore
                 b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(PropertyModel), CodeGeneratorDbProperties.DbSchema);
                 b.ConfigureByConvention();
                 b.HasKey(x => new { x.AggregateModelId, x.Code });
+            });
+            builder.Entity<EnumModel>(b =>
+            {
+                b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(EnumModel), CodeGeneratorDbProperties.DbSchema);
+                b.ConfigureByConvention();
+                b.HasKey(x => new { x.AggregateModelId, x.Code });
+            });
+            builder.Entity<EnumProperty>(b =>
+            {
+                b.ToTable(CodeGeneratorDbProperties.DbTablePrefix + nameof(EnumProperty), CodeGeneratorDbProperties.DbSchema);
+                b.ConfigureByConvention();
+
             });
         }
     }

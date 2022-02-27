@@ -11,5 +11,6 @@ namespace Lion.CodeGenerator.BusinessLines.Mappers
             CreateMap<BusinessLineDto, BusinessLineOutput>();
             CreateMap<BusinessProjectDto, BusinessProjectOutput>();
         }
+        
     }
 }

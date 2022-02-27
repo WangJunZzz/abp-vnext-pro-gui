@@ -1,9 +1,9 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Runtime.Serialization;
+using Microsoft.Extensions.Logging;
 using Volo.Abp;
 
-namespace Lion.CodeGenerator.BusinessLines
+namespace Lion.CodeGenerator.EntityFrameworkCore.BusinessLines
 {
     public class BusinessLineDomainException : UserFriendlyException
     {
