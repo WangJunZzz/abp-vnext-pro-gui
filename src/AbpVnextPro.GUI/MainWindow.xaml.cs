@@ -49,18 +49,12 @@ namespace AbpVnextPro.GUI
             try
             {
                 this.Logs.Text += $"{DateTime.Now.ToString() } 代码已经生成在 {Directory.GetCurrentDirectory()} \r\n";
-                if (string.IsNullOrWhiteSpace(this.CompanyName.Text))
-                {
-                    this.Logs.Text += $"{DateTime.Now.ToString() } 请输入CompanyName....... \r\n";
 
-                    return;
-                }
                 if (string.IsNullOrWhiteSpace(this.ProjectName.Text))
                 {
                     this.Logs.Text += $"{DateTime.Now.ToString() } 请输入ProjectName....... \r\n";
                     return;
                 }
-         
 
                 this.Logs.Text += $"{DateTime.Now.ToString() } 开始下载 {this.Source.Text}....... \r\n";
                 var sourcePath = await _generateAppService.DownloadSourceAsync(this.Source.Text);

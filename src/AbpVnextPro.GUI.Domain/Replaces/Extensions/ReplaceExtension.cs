@@ -8,14 +8,19 @@ namespace AbpVnextPro.GUI.Domain.Replaces.Extensions
 {
     public static class ReplaceExtension
     {
-        public static string CustomReplace(this string content,string companyName,string projectName)
+        public static string CustomReplace(this string content, string companyName, string projectName)
         {
-            var result = content
-                    .Replace(ReplaceConsts.OldCompanyName, companyName)
-                    .Replace(ReplaceConsts.OldProjectName, projectName)
-                ;
-
-            return result;
+            if (companyName.IsNullOrWhiteSpace())
+            {
+                return content.Replace($"{ReplaceConsts.OldCompanyName}.{ReplaceConsts.OldProjectName}", projectName)
+                    .Replace($"{ReplaceConsts.OldCompanyName}{ReplaceConsts.OldProjectName}", projectName)
+                    .Replace(ReplaceConsts.OldProjectName, projectName);
+            }
+            else
+            {
+                return content.Replace(ReplaceConsts.OldCompanyName, companyName)
+                    .Replace(ReplaceConsts.OldProjectName, projectName);
+            }
         }
     }
 }
